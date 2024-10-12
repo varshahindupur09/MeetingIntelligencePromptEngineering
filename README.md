@@ -96,3 +96,28 @@ https://youtu.be/VaEv3H-WppY
 
 # PDF: 
 https://gamma.app/docs/MeetIn-Enhanced-Meeting-Intelligence-with-LLM-Integration-dlegq10mrch398c?mode=doc
+
+# Implementation:
+<img width="1120" alt="image" src="https://github.com/user-attachments/assets/cb3016e2-7998-4c0a-816f-c609d52f7bd5">
+
+Meetin First Page:
+<img width="1112" alt="image" src="https://github.com/user-attachments/assets/4ce572a0-fca6-4940-a262-39ba437c4df2">
+
+
+# AIRFLOW: ADHOC PROCESS:
+The Adhoc DAG consists of four major Tasks to run in the airflow pipeline
+
+The first functionality that we do is to read the audio from adhoc folder in the S3 bucket. The audio file that is available in the adhoc folder is sent through the whisper API. With the help of Whisper API transcription services we reliably and quickly transcribe audio and video content of our call into a text file successfully,this transcript is now written into S3's processed folder. Once this is done we store the transcribed texts into a separate categorized adhoc folder in the S3 bucket Now we invoke the chatgpt API with the help of REST API,where a call is made from the information we have at hand and we ask the questions related to our transcribed text. Along with this we input some initial default questions into the Database
+
+<img width="1123" alt="image" src="https://github.com/user-attachments/assets/36872d33-5f4f-4278-9fbe-5566fdbbcad2">
+
+# BATCH DAG PROCESS:
+Similar to the Adhoc process,we have the batch DAG process which runs four tasks in the airflow
+
+The first functionality that we do is to read the audio from adhoc folder in the S3 bucket. The audio file that is available in the adhoc folder is sent through the whisper API. With the help of Whisper API transcription services we reliably and quickly transcribe audio and video content of our call into a text file successfully,this transcript is now written into S3's processed folder. Once this is done we store the transcribed texts into a separate categorized batch folder in the S3 bucket. Now we invoke the chatgpt API which gets initiated with the help if cron to ask the questions related to our transcribed text. Along with this we input some initial default questions into the database.
+
+<img width="1120" alt="image" src="https://github.com/user-attachments/assets/bdc953f6-446e-4b1b-ab25-c0a7ca2a2ab0">
+
+
+
+
